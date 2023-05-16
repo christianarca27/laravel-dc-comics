@@ -9,8 +9,6 @@ class PageController extends Controller
 {
     public function home()
     {
-        $comics = config('comics');
-
-        return view('comics/index', compact('comics'));
+        return view('home');
     }
 }

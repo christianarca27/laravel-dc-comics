@@ -1,7 +1,9 @@
 <header>
     <nav class="container">
         <div id="logo">
-            <img src="{{ Vite::asset('resources/images/dc-logo.png') }}" alt="Logo DC Comics">
+            <a href="{{ route('home') }}">
+                <img src="{{ Vite::asset('resources/images/dc-logo.png') }}" alt="Logo DC Comics">
+            </a>
         </div>
 
         <ul>
