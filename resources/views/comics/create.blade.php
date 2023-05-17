@@ -25,7 +25,7 @@
 
                 <div class="input-group mb-3">
                     <label class="input-group-text" for="price">Prezzo</label>
-                    <input class="form-control" type="text" name="price" id="price">
+                    <input class="form-control" type="number" step="0.01" name="price" id="price">
                 </div>
 
                 <div class="input-group mb-3">
@@ -35,7 +35,7 @@
 
                 <div class="input-group mb-3">
                     <label class="input-group-text" for="sale_date">Data di vendita</label>
-                    <input class="form-control" type="text" name="sale_date" id="sale_date">
+                    <input class="form-control" type="date" name="sale_date" id="sale_date">
                 </div>
 
                 <div class="input-group mb-3">

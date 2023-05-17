@@ -38,6 +38,7 @@ class ComicController extends Controller
     public function store(Request $request)
     {
         $form_params = $request->all();
+        $form_params['price'] = '$' . number_format($form_params['price'], 2);
 
         $newComic = new Comic();
 
@@ -80,6 +81,7 @@ class ComicController extends Controller
     public function update(Request $request, Comic $comic)
     {
         $form_params = $request->all();
+        $form_params['price'] = '$' . number_format($form_params['price'], 2);
 
         $comic->update($form_params);
 
