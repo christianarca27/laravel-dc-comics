@@ -24,15 +24,38 @@
 
             <div class="row my-5">
                 <div class="col-6">
-                    <a href="{{ route('comics.edit', $comic) }}">Modifica elemento</a>
+                    <a href="{{ route('comics.edit', $comic) }}">
+                        <button class="btn btn-primary">Modifica elemento</button>
+                    </a>
                 </div>
 
                 <div class="col-6">
-                    <form action="{{ route('comics.destroy', $comic) }}" method="post">
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-danger" data-bs-toggle="modal"
+                        data-bs-target="#exampleModal">Elimina elemento</button>
+                </div>
+            </div>
+
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <form action="{{ route('comics.destroy', $comic) }}" method="post" class="modal-content">
                         @csrf
                         @method('DELETE')
 
-                        <button type="submit" class="btn btn-danger">Elimina elemento</button>
+                        <div class="modal-header text-dark">
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">Eliminazione</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+
+                        <div class="modal-body text-dark">
+                            Sei sicuro di voler eliminare questo elemento?
+                        </div>
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Chiudi</button>
+                            <button type="submit" class="btn btn-danger">Conferma</button>
+                        </div>
                     </form>
                 </div>
             </div>
