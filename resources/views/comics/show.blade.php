@@ -28,7 +28,10 @@
                 </div>
 
                 <div class="col-6">
-                    <form action="" method="get">
+                    <form action="{{ route('comics.destroy', $comic) }}" method="post">
+                        @csrf
+                        @method('DELETE')
+
                         <button type="submit" class="btn btn-danger">Elimina elemento</button>
                     </form>
                 </div>
