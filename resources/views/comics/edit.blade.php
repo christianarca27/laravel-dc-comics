@@ -58,7 +58,7 @@
                     </textarea>
                 </div>
 
-                <button class="btn btn-primary">Inserisci</button>
+                <button class="btn btn-primary">Modifica</button>
             </form>
         </div>
     </main>
