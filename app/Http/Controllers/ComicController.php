@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Comic;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class ComicController extends Controller
 {
@@ -107,16 +108,48 @@ class ComicController extends Controller
 
     private function validation(Request $request)
     {
-        $request->validate([
-            'title' => 'required|max:50',
-            'description' => 'required|min:10',
-            'thumb' => 'required',
-            'price' => 'required',
-            'series' => 'required',
-            'sale_date' => 'required',
-            'type' => 'required|max:50',
-            'artists' => 'required',
-            'writers' => 'required',
-        ]);
+        // Validazione con messaggi standard
+        // $request->validate([
+        //     'title' => 'required|max:50',
+        //     'description' => 'required|min:10',
+        //     'thumb' => 'required',
+        //     'price' => 'required',
+        //     'series' => 'required',
+        //     'sale_date' => 'required',
+        //     'type' => 'required|max:50',
+        //     'artists' => 'required',
+        //     'writers' => 'required',
+        // ]);
+
+        // Validazione con messaggi personalizzati
+        $form_data = $request->all();
+
+        $validator = Validator::make(
+            $form_data,
+            [
+                'title' => 'required|max:50',
+                'description' => 'required|min:10',
+                'thumb' => 'required',
+                'price' => 'required',
+                'series' => 'required',
+                'sale_date' => 'required',
+                'type' => 'required|max:50',
+                'artists' => 'required',
+                'writers' => 'required',
+            ],
+            [
+                'title.required' => 'Il titolo deve essere indicato',
+                'title.max' => 'Il titolo non può essere più lungo di 50 caratteri',
+                'description.required' => 'La descrizione deve essere indicata',
+                'description.min' => 'La descrizione deve essere di almeno 10 caratteri',
+                'thumb.required' => 'Il link dell\'immagine deve essere indicato',
+                'price.required' => 'Il prezzo deve essere indicato',
+                'series.required' => 'La serie deve essere indicata',
+                'sale_date.required' => 'La data di uscita deve essere indicata',
+                'type.required' => 'Il tipo deve essere indicato',
+                'artists.required' => 'Gli artisti devono essere indicati',
+                'writers.required' => 'Gli scrittori devono essere indicati',
+            ]
+        )->validate();
     }
 }
