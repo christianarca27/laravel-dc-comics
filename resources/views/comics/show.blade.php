@@ -24,9 +24,7 @@
 
             <div class="row my-5">
                 <div class="col-6">
-                    <a href="{{ route('comics.edit', $comic) }}">
-                        <button class="btn btn-primary">Modifica elemento</button>
-                    </a>
+                    <a class="btn btn-primary" href="{{ route('comics.edit', $comic) }}">Modifica elemento</a>
                 </div>
 
                 <div class="col-6">
