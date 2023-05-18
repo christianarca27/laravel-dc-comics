@@ -37,6 +37,8 @@ class ComicController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validation($request);
+
         $form_params = $request->all();
         $form_params['price'] = '$' . number_format($form_params['price'], 2);
 
@@ -80,6 +82,8 @@ class ComicController extends Controller
      */
     public function update(Request $request, Comic $comic)
     {
+        $this->validation($request);
+
         $form_params = $request->all();
         $form_params['price'] = '$' . number_format($form_params['price'], 2);
 
@@ -99,5 +103,20 @@ class ComicController extends Controller
         $comic->delete();
 
         return redirect()->route('comics.index');
+    }
+
+    private function validation(Request $request)
+    {
+        $request->validate([
+            'title' => 'required|max:50',
+            'description' => 'required|min:10',
+            'thumb' => 'required',
+            'price' => 'required',
+            'series' => 'required',
+            'sale_date' => 'required',
+            'type' => 'required|max:50',
+            'artists' => 'required',
+            'writers' => 'required',
+        ]);
     }
 }
